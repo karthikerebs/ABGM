@@ -21,10 +21,8 @@ class _HomePageState extends State<HomePage> {
     controller.loadRequest(Uri.parse(homeUrl(selectedCountry)));
     controller.setNavigationDelegate(
       NavigationDelegate(
-          onProgress: (int progress) {
-            Text('Loading $progress %');
-          },
-          onPageFinished: (String url) => pageLoadFinished()),
+        onPageFinished: (String url) => pageLoadFinished(),
+      ),
     );
   }
 
@@ -77,6 +75,8 @@ class _HomePageState extends State<HomePage> {
 
   void logout() {
     SharedPref().clearSharedpref();
+    numctrl.clear();
+    passctrl.clear();
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }

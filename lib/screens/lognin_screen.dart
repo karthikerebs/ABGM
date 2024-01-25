@@ -12,8 +12,10 @@ class LoginScreen extends StatefulWidget {
 
 TextEditingController passctrl = TextEditingController();
 TextEditingController numctrl = TextEditingController();
-List<String> countries = ['India', 'UAE', 'South Africa'];
-String selectedCountry = 'India';
+// List<String> countries = ['India', 'UAE', 'South Africa'];
+// String selectedCountry = '';
+List<String> countries = ['Select a Country', 'India', 'UAE', 'South Africa'];
+String selectedCountry = 'Select a Country';
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
@@ -38,8 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               DropdownButton<String>(
-                hint: const Text('Select Country'),
                 value: selectedCountry,
+                hint: const Text('Select Country'),
                 items: countries.map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -47,9 +49,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 }).toList(),
                 onChanged: (newvalue) {
-                  setState(() {
-                    selectedCountry = newvalue!;
-                  });
+                  if (newvalue != 'Select a Country') {
+                    setState(() {
+                      selectedCountry = newvalue!;
+                    });
+                  }
                 },
               ),
               TextFormField(
@@ -95,18 +99,19 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  final String number = numctrl.text;
-  final String password = passctrl.text;
-  // final String number = '8779766586';
-  // final String password = 'RkRJ14D';
-  // south africa
-  // final String number = '0835567409';
-  // final String password = 'Nk91011';
-
   login() async {
+    // india
+    // var number = '8779766586';
+    // var pass = 'RkRJ14D';
+    // south africa
+    // var number = '8086650141';
+    // var pass = 'SmR0957';
     var number = numctrl.text.trim();
     var pass = passctrl.text.trim();
-    if (number.isEmpty || pass.isEmpty) {
+    if (number.isEmpty ||
+        pass.isEmpty ||
+        selectedCountry.isEmpty ||
+        selectedCountry == 'Select a Country') {
       showSnackBar("Please enter valid credentials");
     } else {
       var responseMap =

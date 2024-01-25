@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiServices {
-  
   String url(String country) {
     String link;
     if (country == 'India') {
@@ -11,7 +10,7 @@ class ApiServices {
     } else if (country == 'UAE') {
       link = 'https://bms.abglobalmining.co.ae/api/1.0/login';
     } else {
-      link = 'http://bms.abglobalmining.co.za/api/1.0/login';
+      link = 'https://bms.abglobalmining.co.za/api/1.0/login';
     }
     return link;
   }

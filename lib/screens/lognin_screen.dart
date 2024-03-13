@@ -22,8 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('LOGIN')),
-      ),
+          // title: const Center(child: Text('LOGIN')),
+          ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30),
@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               DropdownButton<String>(
+                underline: Container(),
                 value: selectedCountry,
                 hint: const Text('Select Country'),
                 items: countries.map((String value) {
@@ -57,23 +58,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
               TextFormField(
-                maxLength: 10,
+                // maxLength: 10,
                 controller: numctrl,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
                   labelText: 'Mobile Number',
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               TextFormField(
                 controller: passctrl,
                 obscureText: true,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
                   labelText: 'Password',
                 ),
               ),
@@ -83,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
               MaterialButton(
                 height: 60,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(10)),
                 minWidth: double.infinity,
                 textColor: Colors.white,
                 color: const Color.fromARGB(255, 122, 122, 122),

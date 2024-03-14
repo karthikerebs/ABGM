@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () => _checkLoginStatus());
+    Future.delayed(const Duration(seconds: 1), () => _checkLoginStatus());
   }
 
   void _checkLoginStatus() async {

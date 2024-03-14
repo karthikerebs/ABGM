@@ -6,6 +6,7 @@
     <application
         android:name="${applicationName}"
         android:label="BMS"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/launcher_icon">
 
         <!-- Your activity declaration goes here -->

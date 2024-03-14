@@ -17,7 +17,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isLoading = true;
-  WebViewController controller = WebViewController();
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted);
   ApiServices apicontroller = ApiServices();
   @override
   void initState() {
@@ -60,13 +61,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   homeUrl(String country) {
+    String encodedUserId = base64EncodeString();
     String link;
     if (country == 'India') {
-      link = 'https://bms.abglobalmining.co.in/app/${base64EncodeString}';
+      link = 'https://bms.abglobalmining.co.in/app/$encodedUserId';
     } else if (country == 'UAE') {
-      link = 'https://bms.abglobalmining.co.ae/app/${base64EncodeString}';
+      link = 'https://bms.abglobalmining.co.ae/app/$encodedUserId';
     } else {
-      link = 'https://bms.abglobalmining.co.za/app/${base64EncodeString}';
+      link = 'https://bms.abglobalmining.co.za/app/$encodedUserId';
     }
     print(link.toString());
     return link;
@@ -95,9 +97,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   //create base 64 encodeder
-  base64EncodeString() async {
-    String encodedString = base64.encode(utf8.encode(widget.user));
-
-    return encodedString;
+  base64EncodeString() {
+    String encodedString = base64.encode(utf8.encode(widget.user.toString()));
+    print(encodedString);
+    return encodedString.toString();
   }
 }

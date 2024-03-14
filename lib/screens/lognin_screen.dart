@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(10)),
                   minWidth: double.infinity,
                   textColor: Colors.white,
-                  color: const Color.fromARGB(255, 122, 122, 122),
+                  color: const Color.fromARGB(255, 213, 90, 90),
                   child: const Text('Login'),
                   onPressed: () async {
                     await login();
@@ -107,8 +107,8 @@ class _LoginScreenState extends State<LoginScreen> {
     // south africa
     // var number = '8086650141';
     // var pass = 'SmR0957';
-    var number = numctrl.text.trim();
-    var pass = passctrl.text.trim();
+    var number = numctrl.text;
+    var pass = passctrl.text;
     if (number.isEmpty ||
         pass.isEmpty ||
         selectedCountry.isEmpty ||

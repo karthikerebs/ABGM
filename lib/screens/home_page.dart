@@ -1,11 +1,16 @@
+import 'dart:convert';
+
+import 'package:ere_proj/controller/api_services.dart';
 import 'package:ere_proj/controller/shared_pref.dart';
 import 'package:ere_proj/screens/lognin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.selectedCountry});
+  const HomePage(
+      {super.key, required this.selectedCountry, required this.user});
   final String selectedCountry;
+  final String user;
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -13,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool _isLoading = true;
   WebViewController controller = WebViewController();
-
+  ApiServices apicontroller = ApiServices();
   @override
   void initState() {
     // TODO: implement initState
@@ -57,13 +62,13 @@ class _HomePageState extends State<HomePage> {
   homeUrl(String country) {
     String link;
     if (country == 'India') {
-      link = 'https://abglobalmining.co.in';
+      link = 'https://bms.abglobalmining.co.in/app/${base64EncodeString}';
     } else if (country == 'UAE') {
-      link = 'https://abglobalmining.co.ae';
+      link = 'https://bms.abglobalmining.co.ae/app/${base64EncodeString}';
     } else {
-      link = 'https://abglobalmining.co.za';
+      link = 'https://bms.abglobalmining.co.za/app/${base64EncodeString}';
     }
-
+    print(link.toString());
     return link;
   }
 
@@ -87,5 +92,12 @@ class _HomePageState extends State<HomePage> {
         content: Text(error),
       ),
     );
+  }
+
+  //create base 64 encodeder
+  base64EncodeString() async {
+    String encodedString = base64.encode(utf8.encode(widget.user));
+
+    return encodedString;
   }
 }

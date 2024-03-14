@@ -21,79 +21,79 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // title: const Center(child: Text('LOGIN')),
-          ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 80,
-              ),
-              Image.asset(
-                "assets/images/logo.png",
-                width: 70,
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              DropdownButton<String>(
-                underline: Container(),
-                value: selectedCountry,
-                hint: const Text('Select Country'),
-                items: countries.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (newvalue) {
-                  if (newvalue != 'Select a Country') {
-                    setState(() {
-                      selectedCountry = newvalue!;
-                    });
-                  }
-                },
-              ),
-              TextFormField(
-                // maxLength: 10,
-                controller: numctrl,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  labelText: 'Mobile Number',
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 80,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: passctrl,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  labelText: 'Password',
+                Image.asset(
+                  "assets/images/logo.png",
+                  width: 70,
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              MaterialButton(
-                height: 60,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                minWidth: double.infinity,
-                textColor: Colors.white,
-                color: const Color.fromARGB(255, 122, 122, 122),
-                child: const Text('Login'),
-                onPressed: () async {
-                  await login();
-                },
-              )
-            ],
+                const SizedBox(
+                  height: 50,
+                ),
+                DropdownButton<String>(
+                  underline: Container(),
+                  value: selectedCountry,
+                  hint: const Text('Select Country'),
+                  items: countries.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (newvalue) {
+                    if (newvalue != 'Select a Country') {
+                      setState(() {
+                        selectedCountry = newvalue!;
+                      });
+                    }
+                  },
+                ),
+                TextFormField(
+                  // maxLength: 10,
+                  controller: numctrl,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    labelText: 'Mobile Number',
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: passctrl,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    labelText: 'Password',
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                MaterialButton(
+                  height: 60,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  minWidth: double.infinity,
+                  textColor: Colors.white,
+                  color: const Color.fromARGB(255, 122, 122, 122),
+                  child: const Text('Login'),
+                  onPressed: () async {
+                    await login();
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -120,11 +120,16 @@ class _LoginScreenState extends State<LoginScreen> {
       if (responseMap["sts"] == true) {
         SharedPref sharedpref = SharedPref();
         sharedpref.storeInSharedPref(selectedCountry, responseMap["userid"]);
+        final user = responseMap["userid"];
+
         // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(selectedCountry: selectedCountry),
+            builder: (context) => HomePage(
+              selectedCountry: selectedCountry,
+              user: user.toString(),
+            ),
           ),
         );
       } else {

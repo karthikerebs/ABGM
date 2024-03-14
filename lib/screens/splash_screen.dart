@@ -21,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
     final country = prefs.getString('country');
+    final user = prefs.getString('userid');
     if (isLoggedIn) {
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
@@ -28,6 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         MaterialPageRoute(
             builder: (context) => HomePage(
                   selectedCountry: country!,
+                  user: user.toString(),
                 )),
       );
     } else {

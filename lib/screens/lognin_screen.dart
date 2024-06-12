@@ -1,6 +1,6 @@
-import 'package:ere_proj/controller/api_services.dart';
-import 'package:ere_proj/controller/shared_pref.dart';
-import 'package:ere_proj/screens/home_page.dart';
+import 'package:bms/controller/api_services.dart';
+import 'package:bms/controller/shared_pref.dart';
+import 'package:bms/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {

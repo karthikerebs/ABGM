@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:ere_proj/controller/api_services.dart';
-import 'package:ere_proj/controller/shared_pref.dart';
-import 'package:ere_proj/screens/lognin_screen.dart';
+import 'package:bms/controller/api_services.dart';
+import 'package:bms/controller/shared_pref.dart';
+import 'package:bms/screens/lognin_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

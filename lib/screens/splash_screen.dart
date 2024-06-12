@@ -1,5 +1,5 @@
-import 'package:ere_proj/screens/home_page.dart';
-import 'package:ere_proj/screens/lognin_screen.dart';
+import 'package:bms/screens/home_page.dart';
+import 'package:bms/screens/lognin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
